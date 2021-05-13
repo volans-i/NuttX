@@ -477,6 +477,19 @@ static bool stm32_txringfull(FAR struct stm32_driver_s *priv);
 static int  stm32_transmit(FAR struct stm32_driver_s *priv);
 static int  stm32_txpoll(struct net_driver_s *dev);
 
+/* Filtering (todo) */
+
+#ifdef CONFIG_CAN_EXTID
+static int  stm32can_addextfilter(FAR struct stm32_driver_s *priv,
+                                  FAR struct canioc_extfilter_s *arg);
+static int  stm32can_delextfilter(FAR struct stm32_driver_s *priv,
+                                  int arg);
+#endif
+static int  stm32can_addstdfilter(FAR struct stm32_driver_s *priv,
+                                  FAR struct canioc_stdfilter_s *arg);
+static int  stm32can_delstdfilter(FAR struct stm32_driver_s *priv,
+                                  int arg);
+
 /* Helper functions */
 
 static void stm32_setinit(uint32_t base, uint32_t init);
@@ -1757,6 +1770,102 @@ static void stm32_reset(struct stm32_driver_s *priv)
   /* Filtering catchall */
 
   /// TODO: set default filters
+}
+
+/****************************************************************************
+ * Name: stm32can_addextfilter
+ *
+ * Description:
+ *   Add a filter for extended CAN IDs
+ *
+ * Input Parameters:
+ *   priv - A pointer to the private data structure for this CAN block
+ *   arg  - A pointer to a structure describing the filter
+ *
+ * Returned Value:
+ *   A non-negative filter ID is returned on success.
+ *   Otherwise -1 (ERROR) is returned with the errno
+ *   set to indicate the nature of the error.
+ *
+ ****************************************************************************/
+
+#ifdef CONFIG_CAN_EXTID
+static int stm32can_addextfilter(FAR struct stm32_driver_s *priv,
+                                 FAR struct canioc_extfilter_s *arg)
+{
+  return -ENOTTY;
+}
+#endif
+
+/****************************************************************************
+ * Name: stm32can_delextfilter
+ *
+ * Description:
+ *   Remove a filter for extended CAN IDs
+ *
+ * Input Parameters:
+ *   priv - A pointer to the private data structure for this CAN block
+ *   arg  - The filter index previously returned by the
+ *            CANIOC_ADD_EXTFILTER command
+ *
+ * Returned Value:
+ *   Zero (OK) is returned on success.  Otherwise -1 (ERROR)
+ *   returned with the errno variable set to indicate the
+ *   of the error.
+ *
+ ****************************************************************************/
+
+#ifdef CONFIG_CAN_EXTID
+static int stm32can_delextfilter(FAR struct stm32_driver_s *priv, int arg)
+{
+  return -ENOTTY;
+}
+#endif
+
+/****************************************************************************
+ * Name: stm32can_addstdfilter
+ *
+ * Description:
+ *   Add a filter for standard CAN IDs
+ *
+ * Input Parameters:
+ *   priv - A pointer to the private data structure for this CAN block
+ *   arg  - A pointer to a structure describing the filter
+ *
+ * Returned Value:
+ *   A non-negative filter ID is returned on success.
+ *   Otherwise -1 (ERROR) is returned with the errno
+ *   set to indicate the nature of the error.
+ *
+ ****************************************************************************/
+
+static int stm32can_addstdfilter(FAR struct stm32_driver_s *priv,
+                                 FAR struct canioc_stdfilter_s *arg)
+{
+  return -ENOTTY;
+}
+
+/****************************************************************************
+ * Name: stm32can_delstdfilter
+ *
+ * Description:
+ *   Remove a filter for standard CAN IDs
+ *
+ * Input Parameters:
+ *   priv - A pointer to the private data structure for this CAN block
+ *   arg  - The filter index previously returned by the
+ *            CANIOC_ADD_STDFILTER command
+ *
+ * Returned Value:
+ *   Zero (OK) is returned on success.  Otherwise -1 (ERROR)
+ *   returned with the errno variable set to indicate the
+ *   of the error.
+ *
+ ****************************************************************************/
+
+static int stm32can_delstdfilter(FAR struct stm32_driver_s *priv, int arg)
+{
+  return -ENOTTY;
 }
 
 /****************************************************************************
