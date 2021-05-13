@@ -894,8 +894,8 @@ static int stm32can_ioctl(FAR struct can_dev_s *dev, int cmd,
        *                   canioc_bittiming_s in which the new bit timing
        *                   values are provided.
        *   Returned Value: Zero (OK) is returned on success.  Otherwise -1
-       *                   (ERROR)is returned with the errno variable set
-       *                    to indicate thenature of the error.
+       *                   (ERROR) is returned with the errno variable set
+       *                    to indicate the nature of the error.
        *   Dependencies:   None
        *
        * REVISIT: There is probably a limitation here:  If there are multiple
